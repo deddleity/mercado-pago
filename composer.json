@@ -1,0 +1,33 @@
+{
+  "name"       : "deddleity/mercado-pago",
+  "description": "for mercado pago integration",
+  "keywords"   : ["mercadopago","payment"],
+  "type"       : "library",
+  "license"    : "MIT",
+  "authors"    : [
+    {
+      "name" : "Diana Martinez",
+      "email": "diana.lineofsight@gmail.com"
+    }
+  ],
+  "require": {
+    "php"     : ">=5.3",
+    "ext-curl": "*"
+  },
+  "require-dev": {
+    "leonardothibes/tbs"       : ">=1@stable",
+    "squizlabs/php_codesniffer": ">=1.4@stable",
+    "phpunit/phpunit"          : ">=4.0@stable",
+    "phpunit/php-invoker"      : "*",
+    "sebastian/diff"           : "*",
+    "phploc/phploc"            : "*",
+    "phpmd/phpmd"              : ">=2.1@stable"
+
+  },
+  "config": {
+    "bin-dir": "bin"
+  },
+  "autoload": {
+    "psr-0": {"": "src"}
+  }
+}
