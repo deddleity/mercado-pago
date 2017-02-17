@@ -11,7 +11,7 @@ namespace MercadoPago\Entity\Transaction\PaymentMethods;
 
 use MercadoPago\Entity\Transaction\Payer\IdentificationEntity;
 
-class CardHolderEntity
+class CardHolderEntity 
 {
     /**
      * @var IdentificationEntity

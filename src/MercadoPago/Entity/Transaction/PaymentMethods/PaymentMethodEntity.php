@@ -9,7 +9,7 @@
 namespace MercadoPago\Entity\Transaction\PaymentMethods;
 
 
-class PaymentMethodEntity
+class PaymentMethodEntity 
 {
     /**
      * @var string
@@ -39,6 +39,11 @@ class PaymentMethodEntity
      * @var string
      */
     protected $deferredCapture;
+
+    /**
+     * @var SettingsEntity
+     */
+    protected $settings;
     /**
      * @var array
      */
@@ -57,6 +62,11 @@ class PaymentMethodEntity
     protected $accreditationTime;
 
     /**
+     * @var FinancialInstitutionsEntity
+     */
+    protected $financialInstitutions;
+
+    /**
      * @return string
      */
     public function getId()
@@ -66,10 +76,12 @@ class PaymentMethodEntity
 
     /**
      * @param string $id
+     * @return PaymentMethodEntity
      */
     public function setId($id)
     {
         $this->id = $id;
+        return $this;
     }
 
     /**
@@ -82,10 +94,12 @@ class PaymentMethodEntity
 
     /**
      * @param string $name
+     * @return PaymentMethodEntity
      */
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
     }
 
     /**
@@ -98,10 +112,12 @@ class PaymentMethodEntity
 
     /**
      * @param string $paymentTypeId
+     * @return PaymentMethodEntity
      */
     public function setPaymentTypeId($paymentTypeId)
     {
         $this->paymentTypeId = $paymentTypeId;
+        return $this;
     }
 
     /**
@@ -114,10 +130,12 @@ class PaymentMethodEntity
 
     /**
      * @param string $status
+     * @return PaymentMethodEntity
      */
     public function setStatus($status)
     {
         $this->status = $status;
+        return $this;
     }
 
     /**
@@ -130,10 +148,12 @@ class PaymentMethodEntity
 
     /**
      * @param string $secureThumbnail
+     * @return PaymentMethodEntity
      */
     public function setSecureThumbnail($secureThumbnail)
     {
         $this->secureThumbnail = $secureThumbnail;
+        return $this;
     }
 
     /**
@@ -146,10 +166,12 @@ class PaymentMethodEntity
 
     /**
      * @param string $thumbnail
+     * @return PaymentMethodEntity
      */
     public function setThumbnail($thumbnail)
     {
         $this->thumbnail = $thumbnail;
+        return $this;
     }
 
     /**
@@ -162,10 +184,30 @@ class PaymentMethodEntity
 
     /**
      * @param string $deferredCapture
+     * @return PaymentMethodEntity
      */
     public function setDeferredCapture($deferredCapture)
     {
         $this->deferredCapture = $deferredCapture;
+        return $this;
+    }
+
+    /**
+     * @return SettingsEntity
+     */
+    public function getSettings()
+    {
+        return $this->settings;
+    }
+
+    /**
+     * @param SettingsEntity $settings
+     * @return PaymentMethodEntity
+     */
+    public function setSettings($settings)
+    {
+        $this->settings = $settings;
+        return $this;
     }
 
     /**
@@ -178,10 +220,12 @@ class PaymentMethodEntity
 
     /**
      * @param array $additionalInfoNeeded
+     * @return PaymentMethodEntity
      */
     public function setAdditionalInfoNeeded($additionalInfoNeeded)
     {
         $this->additionalInfoNeeded = $additionalInfoNeeded;
+        return $this;
     }
 
     /**
@@ -194,10 +238,12 @@ class PaymentMethodEntity
 
     /**
      * @param float $minAllowedAmount
+     * @return PaymentMethodEntity
      */
     public function setMinAllowedAmount($minAllowedAmount)
     {
         $this->minAllowedAmount = $minAllowedAmount;
+        return $this;
     }
 
     /**
@@ -210,10 +256,12 @@ class PaymentMethodEntity
 
     /**
      * @param float $maxAllowedAmount
+     * @return PaymentMethodEntity
      */
     public function setMaxAllowedAmount($maxAllowedAmount)
     {
         $this->maxAllowedAmount = $maxAllowedAmount;
+        return $this;
     }
 
     /**
@@ -226,9 +274,32 @@ class PaymentMethodEntity
 
     /**
      * @param float $accreditationTime
+     * @return PaymentMethodEntity
      */
     public function setAccreditationTime($accreditationTime)
     {
         $this->accreditationTime = $accreditationTime;
+        return $this;
     }
+
+    /**
+     * @return FinancialInstitutionsEntity
+     */
+    public function getFinancialInstitutions()
+    {
+        return $this->financialInstitutions;
+    }
+
+    /**
+     * @param FinancialInstitutionsEntity $financialInstitutions
+     * @return PaymentMethodEntity
+     */
+    public function setFinancialInstitutions($financialInstitutions)
+    {
+        $this->financialInstitutions = $financialInstitutions;
+        return $this;
+    }
+
+
+
 }

@@ -8,8 +8,7 @@
 
 namespace MercadoPago\Entity\Transaction\Payer;
 
-
-class IdentificationTypesEntity
+class IdentificationTypesEntity 
 {
     /**
      * @var string

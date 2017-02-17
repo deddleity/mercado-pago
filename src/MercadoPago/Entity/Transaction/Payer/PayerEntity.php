@@ -59,6 +59,24 @@ class PayerEntity
     protected $entity_type;
 
     /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     * @return PayerEntity
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function getName()
@@ -73,6 +91,24 @@ class PayerEntity
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     * @return PayerEntity
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
         return $this;
     }
 
@@ -131,7 +167,7 @@ class PayerEntity
     }
 
     /**
-     * @return string
+     * @return PhoneEntity
      */
     public function getPhone()
     {
@@ -139,7 +175,7 @@ class PayerEntity
     }
 
     /**
-     * @param string $phone
+     * @param PhoneEntity $phone
      * @return PayerEntity
      */
     public function setPhone($phone)
@@ -149,7 +185,7 @@ class PayerEntity
     }
 
     /**
-     * @return string
+     * @return IdentificationEntity
      */
     public function getIdentification()
     {
@@ -157,7 +193,7 @@ class PayerEntity
     }
 
     /**
-     * @param string $identification
+     * @param IdentificationEntity $identification
      * @return PayerEntity
      */
     public function setIdentification($identification)
@@ -167,7 +203,7 @@ class PayerEntity
     }
 
     /**
-     * @return string
+     * @return AddressEntity
      */
     public function getAddress()
     {
@@ -175,48 +211,12 @@ class PayerEntity
     }
 
     /**
-     * @param string $address
+     * @param AddressEntity $address
      * @return PayerEntity
      */
     public function setAddress($address)
     {
         $this->address = $address;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param string $type
-     * @return PayerEntity
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     * @return PayerEntity
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
         return $this;
     }
 
@@ -237,6 +237,7 @@ class PayerEntity
         $this->entity_type = $entity_type;
         return $this;
     }
-    
+
+   
     
 }

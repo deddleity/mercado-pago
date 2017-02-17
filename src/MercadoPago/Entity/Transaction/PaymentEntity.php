@@ -10,149 +10,173 @@ namespace MercadoPago\Entity\Transaction;
 
 
 use MercadoPago\Entity\Transaction\Order\FeeDetailsEntity;
+use MercadoPago\Entity\Transaction\Order\TaxesEntity;
 use MercadoPago\Entity\Transaction\Order\TransactionDetailsEntity;
 use MercadoPago\Entity\Transaction\Payer\PayerEntity;
+use MercadoPago\Entity\Transaction\PaymentMethods\AdditionalInfoEntity;
 use MercadoPago\Entity\Transaction\PaymentMethods\CardEntity;
 
 class PaymentEntity
 {
     /**
      * @var integer
-
      */
     protected $id;
+
     /**
      * @var string
-
      */
     protected $dateCreated;
+
     /**
      * @var string
-
      */
     protected $dateApproved;
+
     /**
      * @var string
-
      */
     protected $dateLastUpdate;
+
     /**
      * @var string
-
      */
     protected $moneyReleaseDate;
+
     /**
      * @var integer
-
      */
     protected $collectorId;
+
     /**
      * @var string
-
      */
     protected $operationType;
+
     /**
      * @var PayerEntity
-
      */
     protected $payer;
+
     /**
      * @var bool
-
      */
     protected $binaryMode;
+
     /**
      * @var bool
-
      */
     protected $liveMode;
+
     /**
      * @var array
-     * @JMS\Type("array")
      */
     protected $order;
+
     /**
      * @var string
      */
     protected $externalReference;
+
     /**
      * @var string
-
      */
     protected $description;
+
     /**
      * @var array
-     * @JMS\Type("array")
      */
     protected $metadata;
+
     /**
      * @var string
-
      */
     protected $currencyId;
     /**
      * @var float
      */
     protected $transactionAmount;
+
+    /**
+     * @var float
+     */
+    protected $netAmount;
+
+    /**
+     * @var array
+     */
+    protected $taxes;
+    
     /**
      * @var float
      */
     protected $transactionAmountRefunded;
+
     /**
      * @var float
      */
     protected $couponAmount;
+
     /**
      * @var integer
      */
     protected $campaignId;
+
     /**
      * @var string
      */
     protected $couponCode;
+
     /**
      * @var TransactionDetailsEntity
      */
     protected $transactionDetails;
+
     /**
-     * @var FeeDetailsEntity
+     * @var array
      */
     protected $feeDetails;
+
     /**
      * @var integer
      */
     protected $differentialPricingId;
+
     /**
      * @var float
      */
     protected $applicationFee;
+
     /**
      * @var string
-
      */
     protected $status;
+
     /**
      * @var string
-
      */
     protected $statusDetail;
+
     /**
      * @var bool
      */
     protected $capture;
+
     /**
      * @var bool
      */
     protected $captured;
+
     /**
      * @var string
-
      */
     protected $callForAuthorizeId;
+
     /**
      * @var string
      */
     protected $paymentMethodId;
+
     /**
      * @var string
      */
@@ -161,39 +185,57 @@ class PaymentEntity
      * @var string
      */
     protected $paymentTypeId;
+
     /**
      * @var string
-
      */
     protected $token;
+
     /**
      * @var CardEntity
      */
     protected $card;
+
     /**
      * @var string
-
      */
-    protected $statmentDescriptor;
+    protected $statementDescriptor;
+
     /**
      * @var integer
-
      */
     protected $installments;
+
     /**
      * @var string
-
      */
     protected $notificationUrl;
+
     /**
      * @var array
-     * @JMS\Type("array")
      */
     protected $refunds;
+
     /**
-     * @var array
+     * @var AdditionalInfoEntity
      */
     protected $additionalInfo;
+
+    /**
+     * @var string
+     */
+    protected $sponsorId;
+
+    /**
+     * @var string
+     */
+    protected $authorizationCode;
+
+    /**
+     * @var string
+     */
+    protected $deductionSchema;
+
 
     /**
      * @return int
@@ -556,7 +598,7 @@ class PaymentEntity
     }
 
     /**
-     * @return string
+     * @return TransactionDetailsEntity
      */
     public function getTransactionDetails()
     {
@@ -564,10 +606,10 @@ class PaymentEntity
     }
 
     /**
-     * @param string $transactionDetails
+     * @param TransactionDetailsEntity $transactionDetails
      * @return PaymentEntity
      */
-    public function setTransactionDetails($transactionDetails)
+    public function setTransactionDetails(TransactionDetailsEntity $transactionDetails)
     {
         $this->transactionDetails = $transactionDetails;
         return $this;
@@ -582,12 +624,12 @@ class PaymentEntity
     }
 
     /**
-     * @param string $feeDetails
+     * @param FeeDetailsEntity $feeDetails
      * @return PaymentEntity
      */
-    public function setFeeDetails($feeDetails)
+    public function setFeeDetails(FeeDetailsEntity $feeDetails)
     {
-        $this->feeDetails = $feeDetails;
+        $this->feeDetails[] = $feeDetails;
         return $this;
     }
 
@@ -810,18 +852,18 @@ class PaymentEntity
     /**
      * @return string
      */
-    public function getStatmentDescriptor()
+    public function getStatementDescriptor()
     {
-        return $this->statmentDescriptor;
+        return $this->statementDescriptor;
     }
 
     /**
-     * @param string $statmentDescriptor
+     * @param string $statementDescriptor
      * @return PaymentEntity
      */
-    public function setStatmentDescriptor($statmentDescriptor)
+    public function setStatementDescriptor($statementDescriptor)
     {
-        $this->statmentDescriptor = $statmentDescriptor;
+        $this->statementDescriptor = $statementDescriptor;
         return $this;
     }
 
@@ -880,7 +922,7 @@ class PaymentEntity
     }
 
     /**
-     * @return array
+     * @return AdditionalInfoEntity
      */
     public function getAdditionalInfo()
     {
@@ -888,7 +930,7 @@ class PaymentEntity
     }
 
     /**
-     * @param array $additionalInfo
+     * @param AdditionalInfoEntity $additionalInfo
      * @return PaymentEntity
      */
     public function setAdditionalInfo($additionalInfo)
@@ -896,4 +938,99 @@ class PaymentEntity
         $this->additionalInfo = $additionalInfo;
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getSponsorId()
+    {
+        return $this->sponsorId;
+    }
+
+    /**
+     * @param string $sponsorId
+     * @return PaymentEntity
+     */
+    public function setSponsorId($sponsorId)
+    {
+        $this->sponsorId = $sponsorId;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAuthorizationCode()
+    {
+        return $this->authorizationCode;
+    }
+
+    /**
+     * @param string $authorizationCode
+     * @return PaymentEntity
+     */
+    public function setAuthorizationCode($authorizationCode)
+    {
+        $this->authorizationCode = $authorizationCode;
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getNetAmount()
+    {
+        return $this->netAmount;
+    }
+
+    /**
+     * @param float $netAmount
+     * @return PaymentEntity
+     */
+    public function setNetAmount($netAmount)
+    {
+        $this->netAmount = $netAmount;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getTaxes()
+    {
+        return $this->taxes;
+    }
+
+    /**
+     * @param TaxesEntity $taxes
+     * @return PaymentEntity
+     */
+    public function setTaxes(TaxesEntity $taxes)
+    {
+        $this->taxes[] = $taxes;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDeductionSchema()
+    {
+        return $this->deductionSchema;
+    }
+
+    /**
+     * @param string $deductionSchema
+     * @return PaymentEntity
+     */
+    public function setDeductionSchema($deductionSchema)
+    {
+        $this->deductionSchema = $deductionSchema;
+        return $this;
+    }
+
+
+
+
+
 }

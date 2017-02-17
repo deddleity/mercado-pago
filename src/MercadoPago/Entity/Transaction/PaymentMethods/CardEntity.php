@@ -15,6 +15,15 @@ class CardEntity
      * @var string
      */
     protected $id;
+
+    /**
+     * @var integer
+     */
+    protected $securityCode;
+    /**
+     * @var integer
+     */
+    protected $cardNumber;
     /**
      * @var string
      */
@@ -208,7 +217,7 @@ class CardEntity
     }
 
     /**
-     * @return string
+     * @return CardHolderEntity
      */
     public function getCardholder()
     {
@@ -386,4 +395,42 @@ class CardEntity
         $this->securityCodeLength = $securityCodeLength;
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getCardNumber()
+    {
+        return $this->cardNumber;
+    }
+
+    /**
+     * @param string $cardNumber
+     * @return CardEntity
+     */
+    public function setCardNumber($cardNumber)
+    {
+        $this->cardNumber = $cardNumber;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSecurityCode()
+    {
+        return $this->securityCode;
+    }
+
+    /**
+     * @param string $securityCode
+     * @return CardEntity
+     */
+    public function setSecurityCode($securityCode)
+    {
+        $this->securityCode = $securityCode;
+        return $this;
+    }
+
+    
 }
