@@ -147,8 +147,10 @@ class PaymentApi
 
         $transfer = new ExternalTransfer();
 
-        /** @TODO review this function */
-        $cardTokenTransfer =  $transfer->getTransfer(new CardEntity(), $cardToken['response']);
+
+        $cardToken['response'];
+        $cardTokenTransfer =  new CardEntity();
+
 
 
         return $cardTokenTransfer;
